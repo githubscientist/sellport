@@ -1,29 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Product from "../components/Product";
 import axios from "axios";
+import { useLoaderData } from "react-router";
 
 const Dashboard = () => {
 
-    const [products, setProducts] = useState([]);
-
-    useEffect(() => {
-        axios.get('https://6a080eccfa9b27c848fa95f5.mockapi.io/products')
-            .then(response => setProducts(response.data))
-            .catch(error => console.error('Error fetching data:', error));
-    }, []);
+    const products = useLoaderData();
 
     return (
         <div>
             <h1>Products</h1>
             <ul>
                 {
-                    products
+                    products.length > 0 ? products
                         .map(product => (
                             <Product
                                 key={product.id}
                                 product={product}
                             />
-                        ))
+                        )) : <p>Loading Products...</p>
                 }
             </ul>
         </div>

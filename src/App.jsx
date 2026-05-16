@@ -4,6 +4,7 @@ import Dashboard from "./pages/Dashboard";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import HomeWrapper from "./wrappers/HomeWrapper";
+import productsLoader from "./loaders/productsLoader";
 
 // create a router object
 const router = createBrowserRouter([
@@ -27,7 +28,9 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard />
+    element: <Dashboard />,
+    loader: productsLoader,
+    hydrateFallbackElement: <p>Loading Products...</p>
   }
 ]);
 
