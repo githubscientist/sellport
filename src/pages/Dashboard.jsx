@@ -1,6 +1,28 @@
+import { useEffect, useState } from "react";
+
 const Dashboard = () => {
+
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        fetch('https://6a080eccfa9b27c848fa95f5.mockapi.io/products')
+            .then(response => response.json())
+            .then(data => setProducts(data))
+            .catch(error => console.error('Error fetching data:', error));
+    }, []);
+
     return (
-        <div>Dashboard</div>
+        <div>
+            <h1>Products</h1>
+            <ul>
+                {
+                    products
+                        .map(product => (
+                            <li key={product.id}>{product.name}</li>
+                        ))
+                }
+            </ul>
+        </div>
     )
 }
 
