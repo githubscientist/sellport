@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const Register = () => {
     const navigate = useNavigate();
@@ -21,6 +21,7 @@ const Register = () => {
                 <input type="password" placeholder="Password" />
                 <button type="submit">Register</button>
             </form>
+            <p>Already have an account? <Link to="/login">Login</Link></p>
         </div>
     )
 }
