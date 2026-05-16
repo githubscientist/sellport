@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import Product from "../components/Product";
+import axios from "axios";
 
 const Dashboard = () => {
 
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('https://6a080eccfa9b27c848fa95f5.mockapi.io/products')
-            .then(response => response.json())
-            .then(data => setProducts(data))
+        axios.get('https://6a080eccfa9b27c848fa95f5.mockapi.io/products')
+            .then(response => setProducts(response.data))
             .catch(error => console.error('Error fetching data:', error));
     }, []);
 
