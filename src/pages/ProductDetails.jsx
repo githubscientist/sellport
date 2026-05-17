@@ -1,16 +1,7 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useLoaderData } from "react-router";
 
 const ProductDetails = () => {
-    // get the product id from the url params
-    const { id } = useParams();
-    const [product, setProduct] = useState(null);
-
-    useEffect(() => {
-        axios.get(`https://6a080eccfa9b27c848fa95f5.mockapi.io/products/${id}`)
-            .then(res => setProduct(res.data));
-    }, []);
+    const product = useLoaderData();
 
     return (
         <div>

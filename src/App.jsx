@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import HomeWrapper from "./wrappers/HomeWrapper";
 import productsLoader from "./loaders/productsLoader";
 import ProductDetails from "./pages/ProductDetails";
+import productLoader from "./loaders/productLoader";
 
 // create a router object
 const router = createBrowserRouter([
@@ -35,7 +36,9 @@ const router = createBrowserRouter([
   },
   {
     path: "/product/:id",
-    element: <ProductDetails />
+    element: <ProductDetails />,
+    loader: productLoader,
+    hydrateFallbackElement: <p>Loading Product...</p>
   }
 ]);
 
