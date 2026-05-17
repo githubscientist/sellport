@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../App";
 
@@ -19,6 +19,13 @@ const Login = () => {
             navigate("/dashboard");
         }, 500);
     }
+
+    // if the user is already logged in, redirect to dashboard
+    useEffect(() => {
+        if (user) {
+            navigate("/dashboard");
+        }
+    }, [user]);
 
     return (
         <div>
