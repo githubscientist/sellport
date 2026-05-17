@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import HomeWrapper from "./wrappers/HomeWrapper";
 import productsLoader from "./loaders/productsLoader";
 import ProductDetails from "./pages/ProductDetails";
+import { createContext, useState } from "react";
 
 // create a router object
 const router = createBrowserRouter([
@@ -39,8 +40,18 @@ const router = createBrowserRouter([
   }
 ]);
 
+// create a context for user authentication
+export const AuthContext = createContext();
+
 const App = () => {
-  return <RouterProvider router={router} />
+  // provide the context to the entire app
+  const [user, setUser] = useState(null);
+
+  return (
+    <AuthContext.Provider value={{ user, setUser }}>
+      <RouterProvider router={router} />
+    </AuthContext.Provider>
+  )
 }
 
 export default App;

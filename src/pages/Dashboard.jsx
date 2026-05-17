@@ -1,14 +1,22 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import Product from "../components/Product";
 import axios from "axios";
 import { useLoaderData } from "react-router";
+import { AuthContext } from "../App";
 
 const Dashboard = () => {
 
     const products = useLoaderData();
 
+    // get the currently logged in user from AuthContext
+    const { user, setUser } = useContext(AuthContext);
+
     return (
         <div>
+            {
+                user ? <p>Welcome, {user.name}!</p> : <p>Please log in to see the products.</p>
+            }
+
             <h1>Products</h1>
             <ul>
                 {
