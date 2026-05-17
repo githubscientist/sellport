@@ -1,6 +1,8 @@
+import { Link } from "react-router";
+
 const Product = ({ product }) => {
     return (
-        <li>{product.name}</li>
+        <li><Link to={`/product/${product.id}`}>{product.name}</Link></li >
     )
 }
 
